@@ -1,0 +1,17 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/prelude-0700/prelude:$COMMIT_SHA', '.']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/prelude-0700/prelude:$COMMIT_SHA']
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+    - 'run'
+    - 'deploy'
+    - 'prelude'
+    - '--image'
+    - 'gcr.io/prelude-0700/prelude:$COMMIT_SHA'
+    - '--region'
+    - 'us-central1'
+images:
+  - 'gcr.io/prelude-0700/prelude:$COMMIT_SHA'

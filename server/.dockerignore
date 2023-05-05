@@ -1,0 +1,7 @@
+client/node_modules/
+client/package-*.json
+
+Dockerfile
+
+node_modules/
+package-*.json

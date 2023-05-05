@@ -1,0 +1,9 @@
+# react app ignores
+client/node_modules
+client/package-*.json
+client/dist
+
+# nodejs app ignores
+node_modules
+package-*.json
+.env
