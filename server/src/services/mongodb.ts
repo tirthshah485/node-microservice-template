@@ -19,7 +19,13 @@ export class MongoDBService {
         return MongoDBService.instance;
     }
 
-    async connect(uri: string, dbName: string): Promise<void> {
+    async connect(dbName: string): Promise<void> {
+        const uri = process.env.MONGODB_URI;
+        if (!uri) {
+            this.logger.error("MongoDB URI not found in environment variable");
+            return;
+        }
+
         try {
             this.client = await MongoClient.connect(uri);
             this.db = this.client.db(dbName);

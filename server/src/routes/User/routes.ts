@@ -6,5 +6,6 @@ export const routes: Array<BaseRouter.Route> = [
         method: BaseRouter.METHOD.GET,
         path: "/hello",
         controllers: [helloWorldController]
-    }
+    },
+    
 ]
